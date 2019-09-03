@@ -1,0 +1,22 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Reflected XSS Attack</h1>
+        <div>
+            Name: <input type="text" id='name'>
+        </div>
+        <br>
+        <div>
+            <button id='submitName' onclick="updateName()">Submit</button>
+            <br>
+            <p>For the attack to be successful, you can input this string into the name field: &ltimg src onerror="alert('hacked!')"&gt</p>
+            <p id='label'></p>
+        </div>
+        <script>
+            function updateName(){
+                var nameText = document.getElementById('name').value;
+                document.getElementById('label').innerHTML = 'Your name is ' + nameText;
+            }
+        </script>
+    </body>
+</html>

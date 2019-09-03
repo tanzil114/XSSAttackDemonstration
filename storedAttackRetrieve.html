@@ -1,0 +1,21 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Stored XSS Attack</h1>
+        <h2>(Retrieve Payload)</h2>
+        <br>
+        <div>
+            <button id='retrieveName' onclick="retrieveName()">Retrieve</button>
+            <br>
+            <!-- <p>For the attack to be successful, you can input this string into the name field: &ltimg src onerror="alert('hacked!')"&gt</p> -->
+            <p id='label'></p>
+        </div>
+        <script>
+            
+            function retrieveName(){
+                document.getElementById('label').innerHTML = localStorage.getItem('name');
+            }
+
+        </script>
+    </body>
+</html>

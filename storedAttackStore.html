@@ -1,0 +1,26 @@
+<html>
+    <head></head>
+    <body>
+        <h1>Stored XSS Attack</h1>
+        <h2>(Store Payload)</h2>
+        <div>
+            Name: <input type="text" id='name'>
+        </div>
+        <br>
+        <div>
+            <button id='storeName' onclick="storeName()">Store</button>
+            <br>
+            <button id='nextPage' onclick="window.location.href='/storedAttackRetrieve'">Next</button>
+            <br>
+            <p>For the attack to be successful, you can store this string into the name field: &ltimg src onerror="alert('hacked!')"&gt</p>
+            <p id='label'></p>
+        </div>
+        <script>
+            
+            function storeName(){
+                var nameText = document.getElementById('name').value;
+                localStorage.setItem('name', nameText);
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <body>
+        <h1>Sign In!</h1>
+        <div>
+            Username <input id='username' type="text">
+            <br>
+            <br>
+            Password <input id='password' type="password">
+        </div>
+        <br>
+        <button id='submit' onclick="validate()">Sign In</button>
+        
+        <div id='error-div'>
+        <p id='error' style="color: red"></p>
+        </div>
+
+        <script>
+
+            var mutationObserver = new MutationObserver(function(mutations){
+                mutations.forEach(function(mutation){
+                    console.log(mutation);
+                });
+            });
+
+            mutationObserver.observe(document.documentElement, {
+                attributes: true,
+                characterData: true,
+                childList: true,
+                subtree: true,
+                attributeOldValue: true,
+                characterDataOldValue: true
+            });
+
+            console.log(mutationObserver.takeRecords())
+
+            function validate(){
+                checkIfEmpty('username');
+            }
+
+            function checkIfEmpty(id){
+                if (document.getElementById(id).value.length == 0){
+                    document.getElementById('error').innerText='Enter ' + id + '!';
+                }
+                else{
+                    document.getElementById('error').innerText='';
+                }
+            }
+        </script>
+    </body>
+</html>

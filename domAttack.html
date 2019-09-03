@@ -1,0 +1,26 @@
+<html>
+    <head></head>
+    <body>
+        <h1>DOM based XSS Attack</h1>
+        <div>
+            Name: <input type="text" id='name'>
+        </div>
+        <br>
+        <div>
+            <button id='submitName' onclick="updateName()">Submit</button>
+            <br>
+            <!-- <p>For the attack to be successful, you can input this string into the name field: &ltimg src onerror="alert('hacked!')"&gt</p> -->
+            <p id='label'></p>
+        </div>
+        <script>
+            function updateName(){
+                var textToPrint = window.location.search.substring(window.location.search.indexOf('name')+5);
+                // textToPrint = textToPrint.substr(5, textToPrint.length)
+                // textToPrint = textToPrint.split('=')[1];
+                // textToPrint = textToPrint.split('&')[0];
+                document.getElementById('label').innerHTML = 'The text is ' + textToPrint;
+                console.log(textToPrint);
+            }
+        </script>
+    </body>
+</html>
